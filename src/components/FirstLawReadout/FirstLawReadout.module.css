@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-surface-card);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--border-radius-lg);
+}
+
+/* Grid with 3 columns; each item spans 4 implicit rows.
+   Subgrid aligns variable / value / unit / label rows across all 3 columns. */
+.itemsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: var(--space-xs) var(--space-md);
+}
+
+.item {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  min-width: 80px;
+  text-align: center;
+}
+
+.variable {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.valueNum {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-lg);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.unit {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-xs);
+  color: var(--color-text-muted);
+  min-height: 1.2em;
+}
+
+.accentGreen {
+  color: var(--color-accent-green);
+}
+
+.accentRed {
+  color: var(--color-accent-red);
+}
+
+.textPrimary {
+  color: var(--color-text-primary);
+}
+
+.subscript {
+  font-size: 0.65em;
+  vertical-align: baseline;
+}
+
+.itemLabel {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.formula {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: var(--border-width-thin) solid var(--color-border-default);
+}
+
+.formulaText {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-md);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.formulaNote {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ─── Mobile overrides ─── */
+@media (max-width: 599px) {
+  .container {
+    padding: var(--space-sm);
+  }
+
+  .itemsRow {
+    gap: var(--space-xs) var(--space-xs);
+  }
+
+  .item {
+    min-width: 48px;
+  }
+}

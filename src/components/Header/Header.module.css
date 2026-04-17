@@ -1,0 +1,85 @@
+.header {
+  background-color: var(--color-surface-card);
+  border-bottom: var(--border-width-thin) solid var(--color-border-default);
+}
+
+.headerInner {
+  margin: 0;
+  padding: var(--space-sm) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.titleWrapper {
+  padding: var(--space-sm) 0;
+}
+
+.title {
+  font-size: var(--text-size-md);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ─── Tab bar ─── */
+.tabList {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.tab {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-size-sm);
+  font-weight: 700;
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  color: var(--color-text-muted);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+  letter-spacing: 0.04em;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-raised);
+}
+
+.tabActive {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-raised);
+  border-bottom-color: var(--color-text-primary);
+}
+
+/* ─── Large screens: title and tabs on one line ─── */
+@media (min-width: 768px) {
+  .headerInner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 var(--space-xl);
+  }
+
+  .titleWrapper {
+    padding: var(--space-sm) 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: var(--text-size-md);
+  }
+}
+
+/* ─── Mobile overrides ─── */
+@media (max-width: 599px) {
+  .headerInner {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .tab {
+    padding: var(--space-sm) var(--space-sm);
+  }
+}
