@@ -76,8 +76,10 @@ export function useFirstLawSimulation({
         lastTimeRef.current === null ? 0 : Math.min((timestamp - lastTimeRef.current) / 1000, 0.1);
       lastTimeRef.current = timestamp;
 
-      const W = canvas.width;
-      const H = canvas.height;
+      const dpr = window.devicePixelRatio || 1;
+      const W = canvas.width / dpr;
+      const H = canvas.height / dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const TRACK_Y = H / 2;
 
       const currentFriction = frictionRef.current;

@@ -18,14 +18,16 @@ export function ThirdLawCanvas({ force, isPlaying }: ThirdLawCanvasProps) {
     if (!container || !canvas) return;
 
     const resizeObserver = new ResizeObserver(() => {
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = container.clientWidth * dpr;
+      canvas.height = container.clientHeight * dpr;
     });
 
     resizeObserver.observe(container);
     // Set initial size
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = container.clientWidth * dpr;
+    canvas.height = container.clientHeight * dpr;
 
     return () => resizeObserver.disconnect();
   }, [canvasRef]);

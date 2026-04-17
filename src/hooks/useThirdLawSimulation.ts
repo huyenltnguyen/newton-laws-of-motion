@@ -23,8 +23,10 @@ export function useThirdLawSimulation({ force }: UseThirdLawSimulationOptions) {
 
     function draw() {
       if (!canvas || !ctx) return;
-      const W = canvas.width;
-      const H = canvas.height;
+      const dpr = window.devicePixelRatio || 1;
+      const W = canvas.width / dpr;
+      const H = canvas.height / dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const trackY = H / 2;
       const currentForce = forceRef.current;
 
